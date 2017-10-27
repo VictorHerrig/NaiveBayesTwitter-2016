@@ -54,7 +54,6 @@ class myStreamer(TwythonStreamer):
         self.disconnect()
 
 def getUsers():
-    #DOESN'T WORK
     ids = ""
     users = []
     stream = myStreamer(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
@@ -71,7 +70,7 @@ def getUsers():
     #    getTweets(id, CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
     
 def getTweets(targetUser, cKey, cSec, aTok, aTokSec):
-    
+    #fixed
     #ids = set()#debugging
     #total = []#debugging
     stream = myStreamer(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
@@ -128,7 +127,7 @@ def getTweets(targetUser, cKey, cSec, aTok, aTokSec):
             #ids.add(tweet['id_str'])#debugging
             #total.append(tweet['id_str'])#debugging
 
-    #Get rid of normal words that were only used a few times (not working?)
+    #Get rid of normal words that were only used a few times - fixed
     unimportantWords = []
     for elements in wordDict:
         if wordDict[elements] < 20:
@@ -147,8 +146,6 @@ def getTweets(targetUser, cKey, cSec, aTok, aTokSec):
     for elements in wordDict:
         wordSet.add(elements)
     wordSetList = [word for word in wordSet]
-    #Sort the words by key 'cause why not (doesn't seem to work right now)
-    #masterList = [wordDict, hashtagDict]
     #Print out to a json
     filename = targetUser + '.json'
     with open(filename, 'w') as outFile:
