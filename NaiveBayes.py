@@ -2,7 +2,6 @@ from collections import defaultdict
 import math
 
 def word_probabilities(counts, total_spams,total_non_spams, k = 0.5):
-    #Something is fishy here
     spam = 0
     nonSpam = 0
     v = []
@@ -70,8 +69,6 @@ class NaiveBayesClassifier:
         #word_counts = words for words, is_spam in training_set
         self.word_probs = word_probabilities(word_counts, num_spams,
                                              num_non_spams, self.k)
-
-    #We do need a way of finding the probabilities
 
     def classify(self, message):
         return spam_probability(self.word_probs, message)
